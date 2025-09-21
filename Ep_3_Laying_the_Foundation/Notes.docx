@@ -1,0 +1,22 @@
+N1 : When we have to do development built we run a command so instead of running a command how we can define script for any long command?
+Ans : We just have to go to package.json file and in script section we have to write shortcut ""start": "parcel 1_index.html"". here start is a name of a script we can name anything and define any command.
+
+N2 : What is JSX?
+Ans : JSX is JS syntax use instead of React.createElement so that our job become easy. 
+
+N3 : If "const jsx = <h1>JSX</h1>" is not readible by JS engine then how it's understanding it?
+Ans : Because of parcel which uses babel we can use JSX in our code. Babel is a transpiler which transpiled jsx code into the code that can JS engine can understand. Babel is a JS compiler and sometime convert ES6 code so that older browser can understand ES6.
+
+Q1. Why in JSX we use "className" and camelcase instead of "class" and attributes in small latter?
+Ans: class is a reserved keyword in JavaScript → so React uses className. JSX attributes follow camelCase to match JavaScript property naming (e.g., onClick, tabIndex)
+
+N4 : What is component in react?
+Ans : Everything is react is a component and there are 2 types of component:-
+1. Class based component - OLD
+2. Functional component - NEW
+
+Q2. How JSX prevent injecting malicious data to our project?
+Ans: JSX protects your app from malicious code by automatically turning anything you put in {} into plain text. So if a user enters {<script>alert('hack')</script>}, JSX will just show it as text on the page, not run it.
+
+Q3. Why in HTML, <h1> cannot be a child of <h1> and cause a hydration error?
+Ans: Because in HTML, some elements are not allowed to contain certain other elements.
