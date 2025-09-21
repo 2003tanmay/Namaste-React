@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaste React</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- react is injected here by CDN link -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js">
+        // this link contain react code written in js.
+    </script>
+    <!-- this file is used to play with DOM using react -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <script>
+        /* first of all we created heading as we created in JS but in react we use "React" instead of document. "createElement" take 3 arguments, 1st tag, 2nd an object containing properties and 3rd is content tag */
+        const heading = React.createElement("h1", {}, "Hello World from React!");
+
+        /* now our heading is created so now we have to inject this heading into the root so we have to first of all we created a own root (which is a virtual DOM) for react and this time we uses "ReactDOM" for using DOM properties and injected our own root in it. */
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        // now we just render heading in root of react
+        root.render(heading);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+In this episode we gonna understand react, what is it, why react instead of js and all stuff. Basically
+we are going to inspect react.
+
+Q1 : What is CDN Links? 
+Ans: It is a URL to a file (like a library) hosted on a global server network, allowing faster and reliable loading of resources in your web app.
+
+Q2 : What is crossorigin?
+Ans: It browsers to handle requests for resources (like scripts) from other origins, enabling features like sharing cookies or using CORS for security.
+
+N1 : why there is 2 cdn links we injected?
+Ans : 1st one is a core react file whereas 2nd one is a react file useful for dom operations.
+
+N2 : why can't they just embedded both file in one? why 2 seperated 2 files?
+Ans : because react not only work in browsers but also work in mobile and different places by react
+native, react-3D.
+
+N3 : Why we create a root using ReactDOM.createRoot(document.getElementById("root")) instead of
+directly passing heading to ReactDOM.createRoot()?
+Ans : 
+    <div id="root"></div>
+
+    <script>
+        // Creating a React element using React.createElement
+        const heading = React.createElement("h1", {}, "Hello World from React");
+
+        // Selecting the root container and rendering the heading
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(heading);
+    </script>
+    
+Because "<div id="root"></div>" is a actual DOM whereas "heading" is a virtual DOM created using React.
+React need a actual DOM where it render it's virtual DOM and heading is not actual DOM so it can't
+render virtual in virtual DOM.
+
+✅ Correct Approach:
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+
+❌ Incorrect Approach:
+const root = ReactDOM.createRoot(heading); // ❌ This will not work
+root.render(heading);
+
+N4 : Why we need React?
+Ans : In Web Applications the most expensive thing is deleting, adding and modifying the DOM elements
+so here comes react which actually uses JS behind the scenes and modifying the DOM most efficiently 
+by helper functions given by the react.
+
+Q3 : Is order of scripts matter? Can we move App.js file to head section?
+like this:-
+<body>
+    <div id="root"> </div>
+    <script src="./4_App.js"></script>
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+</body>
+
+or like this:-
+<head> <script src="./4_App.js"></script> </head>
+Ans: the script tag uses a React api so before using we must load the react by CDN links, that is why we need to add script tag after the CDN links.
+
+Q4 : Why there are more than 1 CDN links for React? Like we uses React development links, what if we uses react production links?
+Ans: If you use the wrong one: app still works, but dev build is slow in production, and prod build hides helpful warnings in development.
+
+N4 : root.render, render its argument to the root. But what if there is already content is present in the root?
+Ans : the render function will replace the already present content by its argument. Browser first read
+html of a file then it load React file then React-DOM file then it load App.js file. That is why we see
+previous content of a html for mili second then it is replaces by the react render code.
+
+N5 : what if we have content over and below the "root" div in the html?
+Ans : react only work into the "root" div, so content of over and below of the div also print. This iswhy react is a librery not a framwork. It can work only on those section where we want it to work. 
