@@ -1,0 +1,59 @@
+/******************************** Ep 4 ******************************************/
+
+In this episode we learn how we create any project, how we plan things.
+
+1. Plan the things.
+    a. Header
+        I. Logo
+        II. Linkes - Home, About, Cart, etc
+    b. Body
+        I. SearchBar
+        II. Restaurent Card
+            A. Image
+            B. Name
+            C. Rating
+            D. Price
+    c. Footer
+        I. Copyright
+        II. Linkes
+
+2. Low level planning
+Components
+    I. Header
+        A. Logo
+        B. Nav Item
+    II. Body
+        A. Search
+        B. RestaurentContainer
+        C. RestaurentCard
+    III. Footer
+        A. Copyright
+        B. Linkes
+        C. Adress
+        D. Contact
+
+N1 : Ways of defining inline css in react component JSX?
+Ans : 
+const resStyle = {
+    color: 'red',
+    fontSize: '20px',
+};
+
+const RestaurentCard = () => {
+    return (
+        1. <div className="res-card1" style= {{border: "1px solid black",backgroundColor: "red"}}></div>
+        2. <div className="res-card2" style = {resStyle} ></div>
+    );
+}
+
+N2 : What is props?
+Ans : props defines properties of component, it is like arguments to the functions.
+
+Q1 : What is config driven UI? (UI looks according to the config data)
+Ans: UI is generated from configuration data (like JSON) instead of hardcoding. Change config → UI changes automatically. ✅
+
+Q2 : Why we use key when we use looping like map or for loop? 
+Ans: We use key in loops so React can uniquely identify elements, track changes, and re-render efficiently without messing up the DOM. React needs key to know which list items changed, added, or removed, so it can update the DOM efficiently instead of re-rendering everything. ✅
+
+Q3 : Why using index as a key is a bad practice?
+Ans: because if the list items change (add/remove/reorder), React may confuse items, causing wrong updates, bugs, or UI glitches. ✅
