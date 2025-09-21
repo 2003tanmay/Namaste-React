@@ -57,3 +57,16 @@ Ans: We use key in loops so React can uniquely identify elements, track changes,
 
 Q3 : Why using index as a key is a bad practice?
 Ans: because if the list items change (add/remove/reorder), React may confuse items, causing wrong updates, bugs, or UI glitches. ✅
+
+/******************************** Ep 5 ******************************************/
+
+Q4 : Why we use export default while exporting things?
+
+Q5 : Why some use .js and .jsx for defining component file and while importing why some not us extension and some use whole name like Header.js or Header.jsx?
+
+N3 : What is React Hooks? why we use it?
+Ans : It is a normal JS utilities functions. We use useState react hooks instead of normal variable 
+because normal one can't sync with the data coming. Let we uses const for data so now when data changes 
+it give error because const can not be change. If we uses let our data changes but our UI will not 
+change because react will not make any changes in UI. So we need a thing which can change and also 
+changes the UI. Whenever a state variable changes react will re rende rthe component.
