@@ -1,0 +1,102 @@
+In this episode we are going to understand what is production ready app and we don't directlly jump into create react app because it will give ready to eat meal because it is already production ready app so we are going to create our own production ready app. 
+
+N1 : What is npm?
+Ans : npm doesn't stand for node package manager, but it is package manager. 
+
+When we do create react app it already has npm in it, but we are gonna know we add npm in our project.
+
+N2 : What is package.json? Why do we need package.json?
+Ans : package.json is a configuration for npm. We need package.json because this file manages our all required packages for project and versions of it.
+
+N3 : What is bundler?
+Ans : When we have normal html, css and js file, our whole code need to be bundled, minimize compressed, cleaned or cached before sending it to the production. Example Veet, Parcel. Create react app uses web-pack and babel bundler.
+
+N4 : Why we use -D in this "npm install -D parcel" command?
+Ans : There are basically 2 types of dependancy available - 1. Dev and 2. normal one. Dev one is required when we are developing our app and normal one also use in production. that is why we are using -D here.
+
+Q1 : What is this "^" and "~" sign in front of a version number of a dependancy in package.json file?
+Ans: ^ (caret) → allows minor + patch updates (e.g., ^18.2.0 → any 18.x.x version).
+~ (tilde) → allows only patch updates (e.g., ~18.2.0 → 18.2.x only).
+
+N5 : What is package-lock.json? Why do we need package.json?
+Ans : package-lock.json keeps a track of a exact version of a package been installed. 
+
+N6 : What is node_modules?
+Ans : node_modules holds the actual code of the dependancies.
+
+Q2 : We install just parcel but in node_modules there is lot more dependancies code present, why?
+Ans: Because when you install a package like Parcel, it also installs all the dependencies that Parcel itself needs to work.
+
+N7 : How the npm know which more dependancies it has to install, we run a command to install just a parcel?
+Ans : So, basically every dependancy has its own package.json file and it keep track of which
+dependancies that package needed, that's how npm know and this is known as transitive dependancy.
+
+N8 : Why we added node_modules to the git ignore file and why not moving package.json and 
+package-lock.json in it?
+Ans : package.json and package-lock.json hold the data of actual dependancies that project needed and
+it can differ project to project whereas node_modules remain same for every project we have to just 
+install dependancies according to our package.json and package-lock.json. Form node_modules we can't 
+generate package.json and package-lock.json but opposite of it is possible.
+
+N9 : What is npx?
+Ans : npx is used to execute the package.
+
+N10: What compressed "npx parcel 1_index.html" do?
+Ans : This command create a server host it on 1234 port and run our project on it. 
+
+Q3 : Why using react from CDN is bad then using from npm?
+Ans: CDN → only good for demos, no optimization or version control.
+npm → better for real projects, bundling, optimization, and easy dependency management. ✅
+
+N11 : we first setup the project by "npm init" 
+then installed the parcel by "npm install -D parcel" 
+then installed react by "npm install react"
+then installed react-dom by "npm install react-dom"
+then "npx parcel 1_index.html" for built our server and run our project.
+
+Q4 : Why dist and .parcel-cache folder created?
+Ans: dist/ → contains the final optimized build output (bundled files ready to run in browser).
+.parcel-cache/ → stores cached build info so next builds are faster (Parcel doesn’t re-bundle everything from scratch). ✅
+
+N12 : Why we do import React from "react"?
+Ans : So, basically in episode 1 we are using CDN so browser using react from that links but now we are not using it so browser don't know from where React is coming so we have to first give browser a command to import the react from node_modules so that it can use it.
+
+Q6 : Why error "Browser scripts cannot have imports or exports" is occurring if we not add the type="module" attribute to the <script> tag?
+Ans: Because by default, <script> is treated as a normal script, which doesn’t support import / export.
+When you add type="module", the browser treats it as an ES Module, which allows import and export syntax. ✅
+
+Q7 : Why we import "react-dom/client" insted of only "react-dom"?
+Ans: Because since React 18, the new createRoot API (needed for concurrent features) lives in react-dom/client, not in the old react-dom package.
+
+N13 : What work parcel is do?
+Ans : 
+1. Dev Build, 
+2. Local Server, 
+3. HMR(Hot Module Replacement (automatic caching changes in project and show in browser)). Parcel do    this by using file matching algorithm which is written in cpp.
+4. Caching for faster build. Everytime we change or again start parcel server it reduced the time to    built because it chached thing for faster built in .parcel-cache .
+5. Image Optemization
+6. Minification, Bundling, compressing.
+7. Consisting Hashing
+8. Code Splitting
+9. Differential Bundling - to support older browser
+10. Good Error handling
+11. help to host on https also
+12. Tree Shaking - remove unused code
+ and more things
+
+Q8 : Why we put dist and .parcel-cache in .gitignore file?
+Ans: whatever we can re generate we not put in github.
+
+/**********************************************************************************************/
+Now we make our app compatible for older browser
+
+1. We have to install browserslist using npm
+2. We have to tell our project that we want our app to compatible for these browser.
+3. For this we have to configure our package.json file like this:
+    "browserslist": [
+        "last 2 Chrome version",
+        "last 2 Firefox version",
+        "last 9 version",
+        "cover 99.5% in US"        
+    ]
+4. We can go to browserslist website and github repo for reference.
