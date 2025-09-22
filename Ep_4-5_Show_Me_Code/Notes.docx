@@ -60,13 +60,35 @@ Ans: because if the list items change (add/remove/reorder), React may confuse it
 
 /******************************** Ep 5 ******************************************/
 
-Q4 : Why we use export default while exporting things?
+Q4 : Why we use export default while exporting things? What is differance between named and default export?
+Ans: Default export → only one export per file, import without {}, can rename while importing.
+Named export → many exports per file, must import with {}, name must match .
 
 Q5 : Why some use .js and .jsx for defining component file and while importing why some not us extension and some use whole name like Header.js or Header.jsx?
+Ans: .js & .jsx both work the same in React. .jsx just makes it clear that the file contains JSX syntax.
 
 N3 : What is React Hooks? why we use it?
-Ans : It is a normal JS utilities functions. We use useState react hooks instead of normal variable 
-because normal one can't sync with the data coming. Let we uses const for data so now when data changes 
-it give error because const can not be change. If we uses let our data changes but our UI will not 
-change because react will not make any changes in UI. So we need a thing which can change and also 
-changes the UI. Whenever a state variable changes react will re rende rthe component.
+Ans : It is a normal JS utilities functions. We use useState react hooks instead of normal variable because normal one can't sync with the data coming. Let we uses const for data so now when data changes it give error because const can not be change. If we uses let our data changes but our UI will not change because react will not make any changes in UI. So we need a thing which can change and also changes the UI. Whenever a state variable changes react will re rende rthe component.
+
+Q6 : What are useState and useEffect hooks? 
+ans: 🔹 useState = A React Hook to add state (data that changes) to a functional component.
+🔹 useEffect = A hook for handling side effects (things outside React’s rendering, like API calls, timers, subscriptions, DOM changes).
+
+Q7 : What is virtual DOM and how it works behind the scene in React?
+Ans: The Virtual DOM (VDOM) is a lightweight copy of the real DOM that React keeps in memory. Instead of updating the real DOM directly (which is slow), React updates the virtual DOM first.
+
+🔹 How it works behind the scenes:
+1. Render: Your React code creates a virtual DOM tree (JS objects representing UI).
+2. Diffing: When state/props change, React builds a new virtual DOM tree and compares it with the old one (diffing algorithm).
+3. Reconciliation: React finds only the parts that actually changed.
+4. Update real DOM: React updates those minimal changes in the real DOM → making it fast and efficient.
+
+N4: What is Diff algorithm?
+Ans: When React’s state or props change, React builds a new Virtual DOM tree. It compares the new tree with the previous Virtual DOM tree → this process is called diffing. Since comparing two full DOM trees is expensive (O(n³)), React uses some smart heuristics:
+
+React’s Diffing Rules :
+1. If the element type is the same (<div> → <div>), React keeps the node and just updates attributes/props.
+2. If the type is different (<div> → <p>), React destroys the old node and creates a new one.
+3. React goes through child elements in order and compares them.
+4. If you use keys, React can efficiently match old vs new children (even if their order changed). If no key is given → React falls back to index, which may cause bugs or unnecessary re-renders.
+
